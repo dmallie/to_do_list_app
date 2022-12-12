@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="canvas">
+       <div class="header">
+              <nav class="header__nav">
+                     <div class="header__left-content">
+                            <img src="{{ user_profile.profile_picture.url }}" class="header__icon" 
+                                   style="max-width:120px; max-height:120px;">
+                     </div>
+                     <div class="header__center">
+                            <h2>{{ event_obj.event_title }}</h2>
+                     </div>
+                     <div class="header__right-content">
+                            <ul class="header__list">
+                                   <li>
+                                          <a href="{% url 'accounts:my_profile' %}"> {{ user.first_name }} {{ user.last_name}} </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'calendar_app:index' %}"> To Calendar </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'accounts:logout' %}"> Logout </a>
+                                   </li>
+                            </ul>
+                     </div>
+              </nav>
+       </div>
+       <div class="container">
+              <div class="details">
+                     <div class="one_block">
+                            <p class="title_">planned action: &nbsp &nbsp {{ event_obj.event_title }}</p>
+                     </div>
+                     <div class="one_block">
+                            <p class="title_">
+                                   Event begins @: &nbsp &nbsp {{ event_obj.event_scheduled_to_begin }} 
+                            </p>
+                            <p class="title_">
+                                   and ends @: &nbsp &nbsp {{ event_obj.event_scheduled_to_end }}       
+                            </p>
+                     </div>
+                     <div class="one_block">
+                            <p class="title_">
+                                   planned action is: &nbsp &nbsp {{ event_obj.event_description }}
+                            </p>
+                     </div>
+              </div>
+              <div class="details_footer">
+                     <ul class="footer__list">
+                            <li>
+                                   <a href="{% url 'calendar_app:delete_event' event_obj.id %}" class="delete_btn">
+                                          Delete
+                                   </a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'calendar_app:edit_event' event_obj.id %}" class="delete_btn">
+                                          Edit
+                                   </a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'calendar_app:schedule_list' event_obj.calendar.slug %}" class="delete_btn">
+                                          To Schedule List
+                                   </a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'calendar_app:index' %}" class="delete_btn">
+                                          To Calendar
+                                   </a>
+                            </li>
+                     </ul>
+              </div>
+       </div>
+</div>
+{% endblock %}

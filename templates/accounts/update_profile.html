@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section-content padding-y">
+       <div class="my_profile_container card mx-auto" style="max-width:620px; margin-top: 80px;">
+              <article class="card-body">
+                     <div class="form-row">
+                            <img src="{{ profile_pic.profile_picture.url }}" 
+                                   class="img-md rounded-circle border" style="max-width:150px; max-height:150px;">
+                     </div>
+                     <br/>
+                     <br/>
+                     <form action="{% url 'accounts:update_profile' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {%  if 'update_names' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/user-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="first_name" maxlength="50" class="field_class form-control" required>
+                                                        </div>
+                                                        <label> &nbsp </label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="last_name" class="field_class form-control">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'email' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/envelope-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group"> 
+                                                               <input type="email" name="email" class="field_class form-control" placeholder="Enter email address">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div> <!-- form-group end.// -->
+                            {% endif %}
+                            {% if 'phone_number' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/phone-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="phone_number" class="field_class form-control" placeholder="Enter phone number">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'gender' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <img src="{% static 'svg/person-half-dress-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                 <label> &nbsp &nbsp</label>
+
+                                                 <label class="custom-control custom-radio custom-control-inline">
+                                                        <input class="custom-control-input" checked="" type="radio" name="gender" value="male">
+                                                        <span class="custom-control-label"> Male </span>
+                                                 </label>
+                                                 <label class="custom-control custom-radio custom-control-inline">
+                                                        <input class="custom-control-input" type="radio" name="gender" value="female">
+                                                        <span class="custom-control-label"> Female </span>
+                                                 </label>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'address' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/location-pin-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="address" class="field_class form-control" placeholder="Steet Address" >
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'postal_code' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/envelopes-bulk-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="number" name="postal_code" class="field_class form-control" placeholder="Your Postal Code">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'city' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/city-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" class="field_class form-control" name="city" placeholder="Enter Your Home City"> 
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'state' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/flag-usa-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="state" class="field_class form-control" placeholder="State or Region">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'country' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <div class="form-row">
+                                                        <img src="{% static 'svg/globe-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                                        <label> &nbsp &nbsp</label>
+                                                        <div class="form-group">
+                                                               <input type="text" name="country" class="field_class form-control" placeholder="Country">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            {% endif %}
+                            {%  if 'profile_img' in update_fields %}
+                                   <div class="form-row">
+                                          <div class="col form-group">
+                                                 <img src="{{ profile.profile_picture.url }}" style="max-width:30px; max-height:30px;"></img>
+                                                 <label> &nbsp &nbsp</label>
+                                                 <label>Change Profile Picture:</label>
+                                                 <label> &nbsp &nbsp &nbsp</label>
+                                                 <input type="file" name="profile_img" class="field_class">
+
+                                          </div>
+                                   </div>
+                            {% endif %}
+
+                            <div class="col form-group">
+                                   <button type="submit" class="btn btn-primary btn-block">Update</button>
+                            </div>
+                     </form>
+              </article>
+              <a href="{% url 'accounts:edit_profile' %}">edit profile</a>
+       </div>
+</section>
+
+{% endblock %}

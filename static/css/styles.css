@@ -1,0 +1,108 @@
+:root {
+       --color-goal-red: #f0725c;
+       --color-black: #000;
+       --color-goal-black: #292929;
+       --color-goal-green: #71b77e;
+       --color-goal-yellow: #f2cd5f;
+       --color-goal-light-blue: #73c3ce;
+       --color-goal-orange: #f29940;
+       --color-goal-purple: #7e85cd;
+       --color-goal-mauve: #cf96c2;
+       --color-goal-blue: #6ea2dd;
+       --color-goal-dark-grey: #333;
+       --color-goal-grey: #828282;
+       --color-goal-mid-grey: #b5b6ba;
+       --color-goal-light-grey: #f5f5f5;
+       --color-goal-banner-black: #161617;
+       --color-goal-banner-white: #e8e8e8;
+       --color-goal-white: #fff;
+       --color-shadow: rgba(0,0,0,.2);
+       --color-facebook: #3b5998;
+       --color-twitter: #4099ff;
+       --color-reddit: #ff5700;
+       --column-gap: 16px;
+       --side-gap: 16px;
+       --vertical-gap: 8px;
+       --max-content-width: 1440px;
+   }
+html{
+	color: var(--color-goal-white);
+	-webkit-font-smoothing: antialiased;
+	font-family: Source Sans Pro,Arial,Helvetica Neue,Helvetica,sans-serif;
+       scroll-behavior: smooth;
+}
+body{
+	background-color: var(--color-black);
+	font-size: 16px;
+	/* min-width: 520px; */
+	margin: 0;
+       font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+       font-size: 1rem;
+       font-weight: 400;
+       line-height: 1.5;
+       color: #212529;
+       text-align: left;
+    /* background-color: #fff; */
+}
+
+body, html{
+	padding: 0;
+	margin: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.sign_up_container{
+       pointer-events: all;
+	background-color: var(--color-goal-black);
+	color: var(--color-goal-white);
+	border: 1px solid var(--color-goal-red);
+    /* width: 70%; */
+	height: 100%;
+       margin-top: 20px; /*0 var(--vertical-gap) var(--side-gap);*/
+	justify-content: center;
+	/* padding-left: 35%; */
+	/* padding-top: 10%; */
+	/* align-items: center; */
+       display: flex;
+       flex-direction: column;
+       gap: 24px;
+
+}
+.my_profile_container{
+	background-color: var(--color-goal-orange);
+	color: var(--color-black);
+	border: 1px solid var(--color-goal-red);
+	height: 100%;
+	margin-top: 20px;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.field_class{
+      background-color: var(--color-goal-dark-grey); 
+      color: var(--color-goal-yellow);
+}
+.svg_update{
+       margin-right: 0;
+}
+.svg-icon {
+       width: 1em;
+       height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+       fill: #4691f6;
+}
+.svg-icon circle {
+       stroke: #4691f6;
+       stroke-width: 1;
+}
+.foot_link{
+       display: flex;
+       justify-content: space-between;
+}
+

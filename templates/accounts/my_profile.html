@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section-content padding-y">
+       <div class="my_profile_container card mx-auto" style="max-width:620px; margin-top: 80px;">
+              <article class="card-body">
+                     <div class="form-row">
+                            <img src="{{ profile.profile_picture.url }}" 
+                                   class="img-md rounded-circle border" style="max-width:150px; max-height:150px;">
+                     </div>
+                     <br/>
+                     <br/>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/user-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label> {{ profile.user.first_name }} &nbsp {{ profile.user.last_name}} </label>
+                                   <label> &nbsp &nbsp &nbsp</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/envelope-solid.svg' %}" style="max-width:40px; max-height:40px;"></img>
+                                   <label> &nbsp</label>
+                                   <label> {{ profile.user.email }}</label>
+                            </div>
+                     </div> <!-- form-group end.// -->
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/phone-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp</label>
+                                   <label>{{ profile.user.phone_number }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/person-half-dress-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.user.gender }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/location-pin-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.address }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/envelopes-bulk-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.postal_code }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/city-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.city }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/flag-usa-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.state }}</label>
+                            </div>
+                     </div>
+                     <div class="form-row">
+                            <div class="col form-group">
+                                   <img src="{% static 'svg/globe-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                   <label> &nbsp &nbsp</label>
+                                   <label>{{ profile.country }}</label>
+                            </div>
+                     </div>
+              </article>
+              <div class="foot_link">
+                     <a href="{% url 'accounts:edit_profile' %}">
+                            <img src="{% static 'svg/pen-to-square-solid.svg' %}" style="max-width:20px; max-height:20px;" class="svg_update"></img>
+                            edit profile
+                     </a>
+                     <a href="{% url 'calendar_app:index' %}">
+                            <img src="{% static 'svg/calendar-solid.svg' %}" style="max-width:20px; max-height:20px;" class="svg_update"></img>
+                            Go To Calendar Page
+                     </a>
+                     <a href="{% url 'accounts:logout' %}">
+                            <img src="{% static 'svg/logout.svg' %}" style="max-width:20px; max-height:20px;" class="svg_update"></img>
+                            logout
+                     </a>
+              </div>
+       </div>
+</section>
+
+{% endblock %}

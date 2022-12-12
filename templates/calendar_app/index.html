@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="canvas">
+<header class="header">
+       <nav class="header__nav">
+              <div class="header__left-content">
+                     <img src="{{ user_profile.profile_picture.url }}" class="header__icon" 
+                            style="max-width:120px; max-height:120px;">
+              </div>
+              <div class="header__right-content">
+                     <ul class="header__list">
+                            <li>
+                                   <a href="{% url 'accounts:my_profile' %}"> {{ user.first_name }} {{ user.last_name}} </a>
+                            </li>
+                            <li>
+                                   <a href="{% url 'accounts:logout' %}"> Logout </a>
+                            </li>
+                     </ul>
+              </div>
+       </nav>
+</header>
+<div class="cal__main">
+       <span class="background"></span>
+       <span class="background_1"></span>
+       <span class="background_2"></span>
+       <h1>calendar</h1>
+       <div class="cal__container">
+
+              <div class="calendar__top">
+                     <span class="arrow"  id="back__arrow">
+                            <a href="{% url 'calendar_app:prev_month' slug %}">
+                                   <
+                            </a>
+                     </span>
+                     {% if current_month %}
+                            <div class="calendar__day">
+                                   <span class="cal__month" id="cal__month">{{ calendar_month }} {{ today_day }}, {{ calendar_year }}</span>
+                            </div>
+                     {% else %}
+                            <div class="calendar__day">
+                                   <span class="cal__month" id="cal__month">{{ calendar_month }}, {{ calendar_year }}</span>
+                            </div>
+                     {% endif %}
+                     <div class="calendar__time">
+                            <span class="cal__time" id="cal__time"></span>
+                     </div>
+                     <span class="arrow" id="forward__arrow">
+                            <a href="{% url 'calendar_app:next_month' slug %}">
+                                   >
+                            </a>
+                     </span>
+              </div>
+              <div>
+              </div> 
+              <div class="calendar__bottom">
+                     <div class="cal__weekdays" id="cal__weekdays">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                     </div>
+                     <div class="cal__days" id="cal__days">
+                            {% for calendar in calendar_obj %}
+                                   {% if calendar.day == 1 %}
+                                          {% for i in week_days %}
+                                                 {% if i == calendar.week_day %}
+                                                        {% if calendar.slug == today %}
+                                                               <span class="today">
+                                                                      <a href="{{ calendar.get_url  }}" >
+                                                                             {{ calendar.day }}
+                                                                      </a>
+                                                               </span>
+                                                        {% else %}
+                                                               <span>
+                                                                      <a href="{{ calendar.get_url  }}" >
+                                                                             {{ calendar.day }}
+                                                                      </a>
+                                                               </span>
+                                                        {% endif %}
+                                                 {% elif i < calendar.week_day %}
+                                                        <span></span>
+                                                 {% else %}
+
+                                                 {% endif %}
+                                          {% endfor %}
+                                          
+                                   {% else %}
+                                          {% if calendar.slug == today %}
+                                                 <span class="today">
+                                                        <a href="{{ calendar.get_url  }}">
+                                                               {{ calendar.day }}
+                                                        </a>
+                                                 </span>
+                                          {% else %}
+                                                 <span>
+                                                        <a href="{{ calendar.get_url  }}">
+                                                               {{ calendar.day }}
+                                                        </a>
+                                                 </span>
+                                          {% endif %}
+                                   {% endif %}
+                            {% endfor %}     
+                     </div>
+              </div>
+       </div>
+</div>
+</div>
+<div id="calendar"></div>
+<div class="user__logout">
+</div>
+
+{% endblock %}

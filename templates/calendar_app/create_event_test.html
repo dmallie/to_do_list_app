@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="canvas">
+       <div class="header">
+              <nav class="header__nav">
+                     <div class="header__left-content">
+                            <img src="{{ user_profile.profile_picture.url }}" class="header__icon" 
+                                   style="max-width:120px; max-height:120px;">
+                     </div>
+                     <div class="header__center">
+                            <h2>Create a new task for the day {{ slug }}</h2>
+                     </div>
+                     <div class="header__right-content">
+                            <ul class="header__list">
+                                   <li>
+                                          <a href="{% url 'accounts:my_profile' %}"> {{ user.first_name }} {{ user.last_name}} </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'calendar_app:index' %}"> To Calendar </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'accounts:logout' %}"> Logout </a>
+                                   </li>
+                            </ul>
+                     </div>
+              </nav>
+       </div>
+
+<main class="card mx-auto" style="max-width:50%; margin-top:60px;">
+       <div class="card_body">
+              <header class="mb-4">
+                     <h1>create new task </h1>
+              </header>
+              <div>
+                     <form class="form_body" action="{% url 'calendar_app:create_event' slug %}" method="POST">
+                            {% csrf_token %}
+                            <div class="time_field_container">
+                                   <select name="starts" required class="time_field">
+                                          <option value>Event starts @</option>
+                                            <option value="0:00">12:00 am</option>
+                                            <option value="1:00">1:00 am</option>
+                                            <option value="2:00">2:00 am</option>
+                                            <option value="3:00">3:00 am</option>
+                                            <option value="4:00">4:00 am</option>
+                                            <option value="5:00">5:00 am</option>
+                                            <option value="6:00">6:00 am</option>
+                                            <option value="7:00">7:00 am</option>
+                                            <option value="8:00">8:00 am</option>
+                                            <option value="9:00">9:00 am</option>
+                                            <option value="10:00">10:00 am</option>
+                                            <option value="11:00">11:00 am</option>
+                                            <option value="12:00">12:00 pm</option>
+                                            <option value="13:00">1:00 pm</option>
+                                            <option value="14:00">2:00 pm</option>
+                                            <option value="15:00">3:00 pm</option>
+                                            <option value="16:00">4:00 pm</option>
+                                            <option value="17:00">5:00 pm</option>
+                                            <option value="18:00">6:00 pm</option>
+                                            <option value="19:00">7:00 pm</option>
+                                            <option value="20:00">8:00 pm</option>
+                                            <option value="21:00">9:00 pm</option>
+                                            <option value="22:00">10:00 pm</option>
+                                            <option value="23:00">11:00 pm</option>
+                                   </select>
+                                   <select name="ends" required class="time_field">
+                                          <option value>Event ends @</option>
+                                            <option value="0:00">12:00 am</option>
+                                            <option value="1:00">1:00 am</option>
+                                            <option value="2:00">2:00 am</option>
+                                            <option value="3:00">3:00 am</option>
+                                            <option value="4:00">4:00 am</option>
+                                            <option value="5:00">5:00 am</option>
+                                            <option value="6:00">6:00 am</option>
+                                            <option value="7:00">7:00 am</option>
+                                            <option value="8:00">8:00 am</option>
+                                            <option value="9:00">9:00 am</option>
+                                            <option value="10:00">10:00 am</option>
+                                            <option value="11:00">11:00 am</option>
+                                            <option value="12:00">12:00 pm</option>
+                                            <option value="13:00">1:00 pm</option>
+                                            <option value="14:00">2:00 pm</option>
+                                            <option value="15:00">3:00 pm</option>
+                                            <option value="16:00">4:00 pm</option>
+                                            <option value="17:00">5:00 pm</option>
+                                            <option value="18:00">6:00 pm</option>
+                                            <option value="19:00">7:00 pm</option>
+                                            <option value="20:00">8:00 pm</option>
+                                            <option value="21:00">9:00 pm</option>
+                                            <option value="22:00">10:00 pm</option>
+                                            <option value="23:00">11:00 pm</option>
+                                   </select>
+                            </div>
+                            <!-- <input type="text" placeholder="Subject" name="subject" required class="field_class"> -->
+                            {{ forms.media }}
+                            {{ forms.as_p }}
+                            <button type="submit" class="btn">Submit</button>
+
+                     </form>
+
+              </div>
+
+       </div>
+</main>
+</div>
+{% endblock %}

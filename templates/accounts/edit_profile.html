@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section-content padding-y">
+       <div class="my_profile_container card mx-auto" style="max-width:620px; margin-top: 80px;">
+              <article class="card-body">
+                     <div class="form-row">
+                            <img src="{{ profile.profile_picture.url }}" 
+                                   class="img-md rounded-circle border" style="max-width:150px; max-height:150px;">
+                     </div>
+                     <br/>
+                     <br/>
+                     <form action="{% url 'accounts:edit_profile' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h4> Check boxes of fields you want to update </h4>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/user-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label> {{ profile.user.first_name }} &nbsp {{ profile.user.last_name}} </label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="update_names">
+                                          {% comment %} <img src="{% static 'svg/pen-to-square-solid.svg' %}" style="max-width:20px; max-height:20px;" class="svg_update"></img> {% endcomment %}
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/envelope-solid.svg' %}" style="max-width:40px; max-height:40px;"></img>
+                                          <label> &nbsp</label>
+                                          <label> {{ profile.user.email }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="email">
+
+                                   </div>
+                            </div> <!-- form-group end.// -->
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/phone-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp</label>
+                                          <label>{{ profile.user.phone_number }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="phone_number">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/person-half-dress-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.user.gender }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="gender">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/location-pin-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.address }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="address">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/envelopes-bulk-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.postal_code }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="postal_code">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/city-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.city }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="city">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/flag-usa-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.state }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="state">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{% static 'svg/globe-solid.svg' %}" style="max-width:30px; max-height:30px;"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>{{ profile.country }}</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="country">
+
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <img src="{{ profile.profile_picture.url }}" style="max-width:30px; max-height:30px;"
+                                                 class="img-md rounded-circle border"></img>
+                                          <label> &nbsp &nbsp</label>
+                                          <label>Change Profile Picture:</label>
+                                          <label> &nbsp &nbsp &nbsp</label>
+                                          <input type="checkbox" name="profile_img">
+
+                                   </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Edit Fields</button>
+                     </form>
+              </article>
+              <a href="{% url 'accounts:my_profile' %}">
+                     <img src="{% static 'svg/pen-to-square-solid.svg' %}" style="max-width:20px; max-height:20px;" class="svg_update"></img>
+                     back to my profile
+              </a>
+       </div>
+</section>
+
+{% endblock %}

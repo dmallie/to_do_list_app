@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="canvas">
+       <div class="header">
+              <nav class="header__nav">
+                     <div class="header__left-content">
+                            <img src="{{ user_profile.profile_picture.url }}" class="header__icon" 
+                                   style="max-width:120px; max-height:120px;">
+                     </div>
+                     <div class="header__center">
+                            <h2>Schedules of the day {{ slug }}</h2>
+                     </div>
+                     <div class="header__right-content">
+                            <ul class="header__list">
+                                   <li>
+                                          <a href="{% url 'accounts:my_profile' %}"> {{ user.first_name }} {{ user.last_name}} </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'calendar_app:index' %}"> To Calendar </a>
+                                   </li>
+                                   <li>
+                                          <a href="{% url 'accounts:logout' %}"> Logout </a>
+                                   </li>
+                            </ul>
+                     </div>
+              </nav>
+       </div>
+       <div class="container">
+              {% if events is None %}
+                     <div class="box">
+                            <h2 class="title">
+                                   No event is planned for the day
+                            </h2>
+                     </div>
+              {% else %}
+                     {% for each_event in events %}
+                     <div class="box">
+                            <p class="hour">
+                                   {{ each_event.event_scheduled_to_begin }} - {{ each_event.event_scheduled_to_end }}
+                            </p>
+                            <p class="title">
+                                   <a href="{% url 'calendar_app:details' each_event.id %}">
+                                          {{ each_event.event_title }}
+                                   </a>
+                            </p>
+                            <p>
+                                   <a href="{% url 'calendar_app:edit_event' each_event.id %}">
+
+                                          <span class="edit">
+                                                 <i class="fas fa-edit"> </i>
+                                          </span>
+                                   </a>
+                            </p>
+                     </div>
+                     {% endfor %}
+       {% endif %}
+              <div class="box">
+                     <p class="hour">
+                            <i class="fa fa-plus"></i>
+                     </p>
+                     <a href="{% url 'calendar_app:create_event' slug %}" class="title">
+                            New Schedule 
+                     </a>
+              </div>
+       </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-content padding-y">
+       <div class="sign_up_container card mx-auto" style="max-width:620px; margin-top: 80px;">
+              <article class="card-body">
+                     <header class="mb-4">
+                            <h4 class="card-title">Sign In</h4>
+                     </header>
+                     <form action="{% url 'accounts:login' %}" method='POST'>
+                            {% csrf_token %}
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <label>User Name:</label>
+                                          <input type="text" class="field_class form-control" name="email" placeholder="Enter Your Email" style="max-width:300px;">
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <label>Password:</label>
+                                          <input type="password" class="field_class form-control" name="password" size="10" maxlength="20" style="max-width:300px;">
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <a href="{% url 'accounts:sign_up' %}">
+                                          Sign Up if you don't have an account yet
+                                   </a>
+                                   
+                            </div>
+                            <div class="form-row">
+                                   <a href="{% url 'accounts:forgot_password' %}">Forgot your password</a>
+
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                   <button type="submit" class="btn btn-primary btn-block" style="max-width:300px;">Sign In</button>
+                            </div>
+                     </form>
+              </article>
+       </div>
+</section>
+{% endblock %}

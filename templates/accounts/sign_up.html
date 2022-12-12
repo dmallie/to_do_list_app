@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section-content padding-y">
+       <div class="sign_up_container card mx-auto" style="max-width:620px; margin-top: 80px;">
+              <article class="card-body">
+                     <header class="mb-4">
+                            <h4 class="card-title">Sign Up</h4>
+                     </header>
+                     <form action="{% url 'sign_up' %}" method='POST' >
+                            {% csrf_token %}
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <label>First Name:</label>
+                                          {{ form.first_name }}
+                                          {% comment %} <input type="text" class="field_class form-control" placeholder="First Name" name="first_name"> {% endcomment %}
+                                   </div>
+                                   <div class="col form-group">
+                                          <label>Last Name:</label>
+                                          {{ form.last_name }}
+                                          {% comment %} <input type="text" class="field_class form-control" placeholder="Last Name"> {% endcomment %}
+                                   </div>
+                            </div>
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          <label>Email:</label>
+                                          {{ form.email }}
+                                          {% comment %} <input type="email" class="field_class form-control" placeholder=""> {% endcomment %}
+                                   </div>
+                                   <div class="col form-group">
+                                          <label>Phone Number: </label>
+                                          {{ form.phone_number }}
+                                          {% comment %} <input type="text" class="field_class form-control" placeholder="phone number"> {% endcomment %}
+                                   </div>
+                            </div> <!-- form-group end.// -->
+                            <div class="form-row">
+                                   <label class="custom-control custom-radio custom-control-inline">
+                                          <input class="custom-control-input" checked="" type="radio" name="gender" value="male">
+                                          <span class="custom-control-label"> Male </span>
+                                   </label>
+                                   <label class="custom-control custom-radio custom-control-inline">
+                                          <input class="custom-control-input" type="radio" name="gender" value="female">
+                                          <span class="custom-control-label"> Female </span>
+                                   </label>
+                                   {% comment %} {{ form.gender }} {% endcomment %}
+                            </div> <!-- form-group end.// -->
+                            <div class="form-row">
+                                   <div class="col form-group">
+                                          {{ form_password }}
+                                   </div>
+                                   <div class="col form-group">
+                                          {{ form_confirm }}
+                                   </div>
+                            </div>
+                            {% comment %} {{ form.as_p }} {% endcomment %}
+                            <div class="form-group">
+                                   <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            </div>
+                            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+                     </form>
+              </article>
+       </div>
+</section>
+
+{% endblock %}
